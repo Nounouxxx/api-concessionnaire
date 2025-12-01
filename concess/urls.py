@@ -9,12 +9,12 @@ path('concessionnaires/', views.ConcessionnaireList.as_view(), name='concessionn
 path('concessionnaires/<int:pk>/', views.ConcessionnaireDetail.as_view(), name='concessionnaire-detail'),
 
 
-# Vehicules for a concessionnaire
+# Vehicules pour un concessionnaire
 path('concessionnaires/<int:concessionnaire_pk>/vehicules/', views.VehiculeListByConcessionnaire.as_view(), name='vehicule-list'),
 path('concessionnaires/<int:concessionnaire_pk>/vehicules/<int:vehicule_pk>/', views.VehiculeDetail.as_view(), name='vehicule-detail'),
 
 
-# Bonus: user creation
+# Bonus: création user
 path('users/', views.UserCreate.as_view(), name='user-create'),
 
 

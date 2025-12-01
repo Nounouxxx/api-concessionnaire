@@ -81,14 +81,13 @@ def get(self, request, concessionnaire_pk, vehicule_pk):
 class UserCreate(APIView):
     permission_classes = [AllowAny]
 
-def post(self, request):
-    username = request.data.get('username')
-    password = request.data.get('password')
-    if not username or not password:
-        return Response({'detail': 'username and password required'}, status=status.HTTP_400_BAD_REQUEST)
-    if User.objects.filter(username=username).exists():
-        return Response({'detail': 'username already exists'}, status=status.HTTP_400_BAD_REQUEST)
-    user = User.objects.create_user(username=username, password=password)
-    return Response({'id': user.id, 'username': user.username}, status=status.HTTP_201_CREATED)
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        if not username or not password:
+            return Response({'detail': 'username and password required'}, status=status.HTTP_400_BAD_REQUEST)
+        if User.objects.filter(username=username).exists():
+            return Response({'detail': 'username already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        user = User.objects.create_user(username=username, password=password)
+        return Response({'id': user.id, 'username': user.username}, status=status.HTTP_201_CREATED)
 
-# JWT endpoints use simplejwt's built-in views (TokenObtainPairView, TokenRefreshView)

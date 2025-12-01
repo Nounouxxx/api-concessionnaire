@@ -53,7 +53,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
-# DATABASE: configure as needed (ici SQLite pour simplicité)
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.sqlite3',
